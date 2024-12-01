@@ -1,10 +1,9 @@
 #include "../include/engine.h"
 #include <GLFW/glfw3.h>
-#include <stdexcept>
 
 
 // The constructor exits just in case someone forgets to call 
-// Shutdown(). CALL Shutdown()!!!
+// Shutdown().
 Engine::~Engine()
 {
     delete window;
@@ -16,9 +15,7 @@ Window* Engine::InitWindow(int width, int height, const char* title)
 {
     // initialize GLFW
     if (!glfwInit())
-    {
         throw std::runtime_error("Error! Failed to initialize GLFW!");
-    }
 
     window = new Window(width, height, title);
     
@@ -30,9 +27,8 @@ Renderer* Engine::InitRenderer()
 {
     // initialize GLEW
     if (glewInit() != GLEW_OK)
-    {
         throw std::runtime_error("Error! Failed to initialize GLEW!");
-    }
+    
 
     renderer = new Renderer();
     return renderer;

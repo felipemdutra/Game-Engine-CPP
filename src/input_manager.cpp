@@ -1,7 +1,15 @@
 #include "../include/input_manager.h"
 #include <GLFW/glfw3.h>
 
-bool InputManager::ProcessKey(GLFWwindow* window, int key)
+int InputManager::ProcessKeyboard()
 {
-    return glfwGetKey(window, key) == GLFW_PRESS; 
+    for (int key : keys)
+    {
+        if (key == GLFW_PRESS)
+        {
+            return key;
+        }
+    }
+    
+    return 0;
 }
